@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1077790974527",
+    "project_id": "uas-pemmob-87636",
+    "storage_bucket": "uas-pemmob-87636.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077790974527:android:452ba386245a0e10050e8a",
+        "android_client_info": {
+          "package_name": "com.example.kamo_4b_029_031_051"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077790974527-2dpgtvcb3ro72236o0qt4lmshfgi91pl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kamo_4b_029_031_051",
+            "certificate_hash": "d47fbe6c43423c9e897e314e79eec1afc881fd4b"
+          }
+        },
+        {
+          "client_id": "1077790974527-fhorc3fro6b7brhuhgrg0c6243d2633n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl9R2ktjpQDRrmsZPpomuPcbThehmreg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077790974527-fhorc3fro6b7brhuhgrg0c6243d2633n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
