@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kamo_4b_029_031_051/Fungsi/user_fungsi.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -8,6 +11,9 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserFungsi loggedInUser = UserFungsi();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

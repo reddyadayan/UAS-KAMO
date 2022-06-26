@@ -1,8 +1,11 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kamo_4b_029_031_051/Fungsi/user_fungsi.dart';
+import 'package:kamo_4b_029_031_051/home_page.dart';
 
 class registerPage extends StatefulWidget {
   const registerPage({Key? key}) : super(key: key);
@@ -155,7 +158,9 @@ class _registerPageState extends State<registerPage> {
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 25),
         minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {},
+        onPressed: () {
+          signUp(emailEditingController.text, passwordEditingController.text);
+        },
         child: Text(
           "Login",
           textAlign: TextAlign.center,
@@ -251,7 +256,7 @@ class _registerPageState extends State<registerPage> {
 
     //semua hasil
     userFungsi.email = user!.email;
-    userFungsi.uid = user!.uid;
+    userFungsi.uid = user.uid;
     userFungsi.fullname = fullNameEditingController.text;
     userFungsi.phone = phoneEditingController.text;
 
@@ -260,5 +265,8 @@ class _registerPageState extends State<registerPage> {
         .doc(user.uid)
         .set(userFungsi.toMap());
     Fluttertoast.showToast(msg: "Berhasil Membuat Account");
+
+    Navigator.pushAndRemoveUntil((context),
+        MaterialPageRoute(builder: (context) => homePage()), (route) => false);
   }
 }
