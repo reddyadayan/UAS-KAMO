@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kamo_4b_029_031_051/Fungsi/user_fungsi.dart';
+import 'package:kamo_4b_029_031_051/login_page.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -28,6 +29,17 @@ class _homePageState extends State<homePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddBarangPage(),
+                    )),
+              },
+              child: Text('add', style: TextStyle(fontSize: 15.0)),
+              style: ElevatedButton.styleFrom(primary: Colors.yellow),
+            ),
             SizedBox(
               height: 150,
             ),
@@ -44,10 +56,19 @@ class _homePageState extends State<homePage> {
             SizedBox(
               height: 15,
             ),
-            ActionChip(label: Text("Logout"), onPressed: () {}),
+            ActionChip(
+                label: Text("Logout"),
+                onPressed: () {
+                  logout(context);
+                }),
           ],
         ),
       )),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

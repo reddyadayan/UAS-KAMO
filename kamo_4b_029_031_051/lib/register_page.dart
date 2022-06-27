@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +39,7 @@ class _registerPageState extends State<registerPage> {
         if (!regex.hasMatch(value)) {
           return ("Masukan Nama Dengan Benar (Min. 3 Character");
         }
+        return null;
       },
       onSaved: (value) {
         fullNameEditingController.text = value!;
@@ -68,6 +67,7 @@ class _registerPageState extends State<registerPage> {
         if (!regex.hasMatch(value)) {
           return ("Masukan Nomor Dengan Benar (Min. 12 Character");
         }
+        return null;
       },
       onSaved: (value) {
         phoneEditingController.text = value!;
@@ -86,6 +86,16 @@ class _registerPageState extends State<registerPage> {
       autofocus: false,
       controller: emailEditingController,
       keyboardType: TextInputType.name,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Masukan Email Anda!");
+        }
+        //reg untuk validation email
+        if (!RegExp("^[a-zA-Z0-9+-.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Masukan Email yang Valid");
+        }
+        return null;
+      },
       onSaved: (value) {
         emailEditingController.text = value!;
       },
@@ -109,10 +119,10 @@ class _registerPageState extends State<registerPage> {
         if (value!.isEmpty) {
           return ("Masukan Password Untuk Login");
         }
-
         if (!regex.hasMatch(value)) {
           return ("Masukan Password Dengan Benar (Min. 8 Character");
         }
+        return null;
       },
       onSaved: (value) {
         passwordEditingController.text = value!;
@@ -136,7 +146,6 @@ class _registerPageState extends State<registerPage> {
             passwordEditingController.text != value) {
           return "Password Tidak Cocok";
         }
-        return null;
       },
       onSaved: (value) {
         confirmPasswordEditingController.text = value!;
@@ -162,7 +171,7 @@ class _registerPageState extends State<registerPage> {
           signUp(emailEditingController.text, passwordEditingController.text);
         },
         child: Text(
-          "Login",
+          "Sign Up",
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: 20,
@@ -267,6 +276,6 @@ class _registerPageState extends State<registerPage> {
     Fluttertoast.showToast(msg: "Berhasil Membuat Account");
 
     Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => homePage()), (route) => false);
+        MaterialPageRoute(builder: (context) => homePage()), (Route) => false);
   }
 }
